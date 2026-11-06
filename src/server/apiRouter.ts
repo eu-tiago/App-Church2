@@ -20,6 +20,16 @@ import {
   PaymentWebhookEvent,
   UserRole
 } from './types';
+import { checkMySQLHealth } from './mysql';
+import {
+  persistMemberToMySQL,
+  persistVisitorToMySQL,
+  persistCellToMySQL,
+  persistRegistrationToMySQL,
+  persistTransactionToMySQL,
+  persistAuditLogToMySQL,
+  initMySQLSync
+} from './mysqlSync';
 
 export const apiRouter = Router();
 
@@ -36,7 +46,27 @@ function logAudit(tenantId: string, userId: string | undefined, userName: string
     createdAt: new Date().toISOString()
   };
   db.auditLogs.unshift(log);
+  // Persist to MySQL
+  persistAuditLogToMySQL(log);
 }
+
+// Database Status & Diagnostics
+apiRouter.get('/database/status', async (_req, res) => {
+  const health = await checkMySQLHealth();
+  res.json({
+    status: health.connected ? 'online' : 'offline',
+    ...health
+  });
+});
+
+apiRouter.post('/database/sync', async (_req, res) => {
+  await initMySQLSync();
+  const health = await checkMySQLHealth();
+  res.json({
+    message: 'Sincronização com o MySQL concluída com sucesso!',
+    health
+  });
+});
 
 // =============================================================================
 // AUTHENTICATION & SESSION
@@ -369,6 +399,7 @@ apiRouter.post('/members', authMiddleware, requireTenant, (req: AuthenticatedReq
   };
 
   db.members.unshift(newMember);
+  persistMemberToMySQL(newMember);
   logAudit(tenantId, req.user?.id, req.user?.name, 'MEMBER_CREATED', 'MEMBER', newMember.id, { name: newMember.name });
 
   res.status(201).json(newMember);
@@ -385,6 +416,7 @@ apiRouter.put('/members/:id', authMiddleware, requireTenant, (req: Authenticated
   }
 
   Object.assign(member, req.body, { updatedAt: new Date().toISOString() });
+  persistMemberToMySQL(member);
   logAudit(tenantId, req.user?.id, req.user?.name, 'MEMBER_UPDATED', 'MEMBER', member.id);
   res.json(member);
 });
@@ -430,6 +462,7 @@ apiRouter.post('/visitors', authMiddleware, requireTenant, (req: AuthenticatedRe
   };
 
   db.visitors.unshift(newVisitor);
+  persistVisitorToMySQL(newVisitor);
 
   // Auto-schedule first contact pastoral followup
   const followup: PastoralFollowup = {
@@ -477,10 +510,12 @@ apiRouter.post('/visitors/:id/convert', authMiddleware, requireTenant, (req: Aut
   };
 
   db.members.unshift(newMember);
+  persistMemberToMySQL(newMember);
 
   visitor.convertedToMemberId = newMember.id;
   visitor.convertedAt = new Date().toISOString();
   visitor.funnelStage = 'membro';
+  persistVisitorToMySQL(visitor);
 
   logAudit(tenantId, req.user?.id, req.user?.name, 'VISITOR_CONVERTED_TO_MEMBER', 'MEMBER', newMember.id, {
     visitorId: visitor.id,
@@ -549,6 +584,7 @@ apiRouter.post('/cells', authMiddleware, requireTenant, (req: AuthenticatedReque
   };
 
   db.cells.unshift(newCell);
+  persistCellToMySQL(newCell);
   logAudit(tenantId, req.user?.id, req.user?.name, 'CELL_CREATED', 'CELL', newCell.id, { name: newCell.name });
 
   res.status(201).json(newCell);
@@ -1102,6 +1138,7 @@ apiRouter.post('/public/events/:slug/register', (req, res) => {
   };
 
   db.eventRegistrations.unshift(registration);
+  persistRegistrationToMySQL(registration);
   lot.quantitySold += 1;
 
   // Auto add to General Financials
@@ -1241,6 +1278,7 @@ apiRouter.post('/financial/transactions', authMiddleware, requireTenant, (req: A
   };
 
   db.financialTransactions.unshift(transaction);
+  persistTransactionToMySQL(transaction);
 
   if (account && status === 'pago') {
     if (transaction.type === 'receita') {

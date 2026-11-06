@@ -1,6 +1,8 @@
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import { apiRouter } from './src/server/apiRouter';
+import { checkMySQLHealth } from './src/server/mysql';
+import { initMySQLSync } from './src/server/mysqlSync';
 
 async function startServer() {
   const app = express();
@@ -8,12 +10,27 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Initialize and synchronize with remote MySQL database
+  await initMySQLSync();
+
   // Mount API REST routes
   app.use('/api', apiRouter);
 
-  // Health check endpoint
-  app.get('/health', (_req, res) => {
-    res.json({ status: 'ok', service: 'ChurchFlow SaaS API' });
+  // Health check endpoint with live MySQL status
+  app.get('/health', async (_req, res) => {
+    const dbHealth = await checkMySQLHealth();
+    res.json({
+      status: 'ok',
+      service: 'ChurchFlow SaaS API',
+      database: {
+        engine: 'MySQL 8.0 (Hostinger Cloud)',
+        host: dbHealth.host,
+        name: dbHealth.database,
+        connected: dbHealth.connected,
+        tablesCount: dbHealth.tablesCount,
+        latencyMs: dbHealth.latencyMs
+      }
+    });
   });
 
   // Environment check: production vs development

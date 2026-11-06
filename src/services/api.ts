@@ -184,5 +184,9 @@ export const api = {
   getPlans: () => request<any[]>('/saas/plans'),
 
   // Audit
-  getAuditLogs: () => request<any[]>('/audit-logs')
+  getAuditLogs: () => request<any[]>('/audit-logs'),
+
+  // MySQL Database
+  getDatabaseStatus: () => request<any>('/database/status'),
+  syncDatabase: () => request<any>('/database/sync', { method: 'POST' })
 };
