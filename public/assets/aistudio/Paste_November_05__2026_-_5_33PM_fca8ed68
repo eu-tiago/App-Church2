@@ -1,0 +1,1687 @@
+# PROJETO: PLATAFORMA SAAS DE GESTÃO INTELIGENTE PARA IGREJAS
+
+## 1. SUA MISSÃO
+
+Atue como uma equipe multidisciplinar de desenvolvimento de software de uma empresa de tecnologia de grande porte.
+
+Você deverá assumir simultaneamente os papéis de:
+
+- CTO e Arquiteto de Software.
+- Engenheiro Full Stack Sênior.
+- Especialista em SaaS e Multi-Tenant.
+- Especialista em MySQL e modelagem de dados.
+- Especialista em integrações financeiras e APIs.
+- Especialista em UX/UI Design.
+- Product Manager.
+- Especialista em segurança de aplicações.
+- Engenheiro de qualidade e testes.
+
+Sua missão é projetar e desenvolver uma plataforma SaaS comercial para gestão de igrejas, com foco especial em gestão de células, membros, liderança, eventos, financeiro e inteligência gerencial.
+
+O produto será comercializado por assinatura para diversas igrejas no Brasil.
+
+Não desenvolva apenas um protótipo ou uma demonstração visual.
+
+Desenvolva uma aplicação funcional, com arquitetura profissional, banco de dados MySQL, autenticação real, persistência de dados, regras de negócio, integrações externas, dashboards, relatórios e controle de permissões.
+
+O sistema deverá possuir qualidade de produto comercial, comparável a plataformas SaaS utilizadas por grandes empresas.
+
+Nome provisório do produto: ChurchFlow.
+
+O nome deverá ser configurável posteriormente.
+
+---
+
+# 2. VISÃO DO PRODUTO
+
+Construir uma plataforma centralizada que permita aos gestores de igrejas administrar toda a operação da instituição.
+
+O sistema deverá integrar cinco grandes áreas:
+
+1. Gestão e crescimento da igreja.
+2. Gestão de células e pessoas.
+3. Gestão administrativa e financeira.
+4. Eventos, inscrições e pagamentos.
+5. Inteligência de dados e indicadores gerenciais.
+
+O produto deverá atender desde pequenas igrejas até organizações com múltiplas congregações e milhares de membros.
+
+O principal diferencial competitivo será a integração entre a gestão de células, a jornada dos membros, o financeiro e a gestão de eventos.
+
+Exemplo de utilização:
+
+Um visitante participa de uma célula, é cadastrado no sistema, passa pelo processo de acompanhamento, torna-se membro, participa de um ministério e posteriormente se inscreve em um congresso organizado pela igreja.
+
+Todas essas informações deverão estar relacionadas, respeitando as permissões e a privacidade dos dados.
+
+---
+
+# 3. IDENTIDADE VISUAL E DESIGN SYSTEM
+
+Esta é uma das partes mais importantes do projeto.
+
+O sistema deverá possuir aparência de um SaaS premium desenvolvido por uma empresa de tecnologia consolidada.
+
+## Referências de design
+
+Utilize como referência de qualidade visual:
+
+- Linear.
+- Stripe.
+- HubSpot.
+- Vercel.
+- Notion.
+- Monday.com.
+- Ramp.
+
+Não copie essas plataformas. Desenvolva uma identidade própria utilizando os melhores conceitos de usabilidade e design dessas referências.
+
+## Diretrizes visuais
+
+Criar um design system consistente contendo:
+
+- Paleta de cores.
+- Tipografia.
+- Escala de espaçamento.
+- Grid.
+- Bordas.
+- Sombras.
+- Estados dos componentes.
+- Botões.
+- Inputs.
+- Dropdowns.
+- Tabelas.
+- Cards.
+- Modais.
+- Menus.
+- Alertas.
+- Toasts.
+- Badges.
+- Gráficos.
+
+## Identidade visual sugerida
+
+Utilizar uma identidade sofisticada:
+
+- Azul-marinho profundo como cor institucional.
+- Branco e cinza claro para superfícies.
+- Cinza grafite para textos.
+- Azul discreto para ações principais.
+- Verde para situações positivas.
+- Vermelho para erros e situações críticas.
+- Âmbar para alertas.
+
+Evitar gradientes excessivos e cores chamativas.
+
+## Layout principal
+
+Criar:
+
+- Sidebar lateral fixa e recolhível.
+- Cabeçalho superior.
+- Breadcrumbs.
+- Seletor de congregação.
+- Identificação da igreja.
+- Campo de pesquisa global.
+- Central de notificações.
+- Menu do usuário.
+- Área de conteúdo organizada.
+- Sidebar responsiva para dispositivos móveis.
+
+A sidebar deverá possuir agrupamentos de módulos, evitando excesso de opções visíveis simultaneamente.
+
+## Experiência visual
+
+Utilizar:
+
+- Tabelas com paginação.
+- Filtros avançados.
+- Pesquisa instantânea.
+- Gráficos elegantes.
+- Cards com informações relevantes.
+- Indicadores comparativos.
+- Skeleton loading.
+- Empty states profissionais.
+- Feedback visual de operações.
+- Animações discretas.
+- Modais com hierarquia clara.
+
+Não utilizar emojis como substitutos de ícones profissionais.
+
+Utilizar biblioteca de ícones consistente, como Lucide.
+
+Não utilizar layouts genéricos que pareçam gerados automaticamente por IA.
+
+Não colocar todos os indicadores em cards gigantes.
+
+Priorizar densidade de informação, legibilidade, hierarquia visual e produtividade.
+
+## Personalização
+
+Cada igreja poderá configurar:
+
+- Nome.
+- Logotipo.
+- Cores institucionais.
+- Congregações.
+- Dados de contato.
+
+O layout deverá ser consistente mesmo quando houver personalização.
+
+---
+
+# 4. ARQUITETURA E TECNOLOGIAS
+
+Utilizar arquitetura moderna, modular e escalável.
+
+## Stack tecnológica obrigatória
+
+Frontend:
+- React.
+- TypeScript.
+- Vite ou Next.js, conforme compatibilidade do ambiente.
+- Tailwind CSS.
+- shadcn/ui.
+- Lucide Icons.
+- Recharts.
+
+Backend:
+- Node.js.
+- TypeScript.
+- NestJS ou Express com arquitetura modular.
+- API REST.
+- Prisma ORM.
+- Zod ou class-validator.
+
+Banco de dados:
+- MySQL 8.0 ou superior.
+
+Autenticação:
+- JWT.
+- Refresh Token.
+- Controle de sessão.
+- Hash seguro de senhas com Argon2 ou bcrypt.
+
+Integrações:
+- REST APIs.
+- Webhooks.
+- Filas de processamento assíncrono.
+- Logs de integração.
+
+Documentação:
+- Swagger/OpenAPI.
+
+## Regras arquiteturais
+
+O frontend nunca deverá acessar diretamente o MySQL.
+
+Toda operação deverá passar pelo backend.
+
+Não expor credenciais, tokens ou segredos no código frontend.
+
+Separar:
+
+- Apresentação.
+- Regras de negócio.
+- Serviços.
+- Persistência.
+- Integrações externas.
+- Autorização.
+- Auditoria.
+
+Implementar tratamento padronizado de erros.
+
+Criar estrutura que permita adicionar novos módulos sem comprometer os módulos existentes.
+
+## Compatibilidade com Google AI Studio
+
+Desenvolver a aplicação respeitando os recursos disponíveis no ambiente de execução do Google AI Studio.
+
+Caso algum recurso não seja suportado diretamente, implementar uma alternativa compatível e documentar a decisão.
+
+Não substituir MySQL por Firebase, Firestore ou outro banco NoSQL.
+
+O MySQL deverá ser o banco relacional principal e obrigatório.
+
+---
+
+# 5. ARQUITETURA MULTI-TENANT
+
+A aplicação será comercializada para diversas igrejas.
+
+Cada igreja será um Tenant.
+
+Implementar arquitetura Multi-Tenant com banco de dados compartilhado e isolamento lógico por tenant_id.
+
+## Requisitos
+
+- Todas as igrejas utilizarão a mesma aplicação.
+- Cada igreja terá seus próprios usuários.
+- Cada igreja terá seus próprios membros.
+- Cada igreja terá suas próprias células.
+- Cada igreja terá seus próprios eventos.
+- Cada igreja terá seu próprio financeiro.
+- Cada igreja terá suas próprias integrações.
+- Cada igreja terá seus próprios planos e configurações.
+- Nenhuma igreja poderá acessar dados de outra.
+
+## Regras obrigatórias
+
+O tenant deverá ser identificado a partir da sessão autenticada e validado no backend.
+
+Nunca confiar em tenant_id enviado pelo frontend.
+
+Toda consulta deverá respeitar o contexto do tenant.
+
+Criar testes automatizados de isolamento.
+
+Implementar índices compostos considerando tenant_id.
+
+Utilizar chaves e relacionamentos que impeçam associações indevidas entre registros de igrejas diferentes.
+
+O Superadministrador poderá visualizar indicadores consolidados da plataforma, respeitando os controles de acesso e a auditoria.
+
+---
+
+# 6. AUTENTICAÇÃO E CONTROLE DE ACESSO
+
+Implementar autenticação real.
+
+Funcionalidades:
+
+- Login.
+- Logout.
+- Recuperação de senha.
+- Alteração de senha.
+- Gestão de sessões.
+- Expiração de tokens.
+- Renovação de sessão.
+- Controle de dispositivos.
+- Convite de usuários.
+- Primeiro acesso.
+- Bloqueio de usuários.
+
+Implementar RBAC (Role-Based Access Control).
+
+## Perfis iniciais
+
+- Superadministrador SaaS.
+- Administrador da igreja.
+- Pastor principal.
+- Pastor auxiliar.
+- Coordenador.
+- Supervisor de células.
+- Líder de célula.
+- Colíder.
+- Tesoureiro.
+- Secretário.
+- Responsável por eventos.
+- Responsável por ministério.
+- Membro.
+
+Permitir personalização de permissões.
+
+Exemplos:
+
+Líder de célula:
+- Visualizar suas células.
+- Cadastrar visitantes.
+- Registrar reuniões.
+- Registrar frequência.
+- Consultar participantes autorizados.
+
+Tesoureiro:
+- Acessar financeiro.
+- Consultar receitas.
+- Registrar despesas.
+- Realizar conciliação.
+
+Responsável por eventos:
+- Criar eventos.
+- Configurar inscrições.
+- Consultar pagamentos dos eventos.
+- Gerenciar participantes.
+
+Pastor principal:
+- Visualizar indicadores estratégicos.
+- Acompanhar células.
+- Acompanhar membros.
+- Consultar relatórios autorizados.
+
+---
+
+# 7. DASHBOARD EXECUTIVO
+
+Criar um dashboard estratégico para a liderança da igreja.
+
+Indicadores:
+
+- Total de membros.
+- Visitantes no mês.
+- Novos membros.
+- Células ativas.
+- Líderes ativos.
+- Frequência média.
+- Pessoas em acompanhamento.
+- Eventos próximos.
+- Inscrições em andamento.
+- Receita mensal.
+- Despesas mensais.
+- Saldo financeiro.
+- Resultado dos eventos.
+
+Criar gráficos:
+
+- Crescimento de membros.
+- Evolução das células.
+- Frequência mensal.
+- Novos visitantes.
+- Conversão de visitantes.
+- Evolução financeira.
+- Receita por evento.
+- Comparativo entre períodos.
+
+Permitir filtros por:
+
+- Período.
+- Congregação.
+- Região.
+- Ministério.
+
+Criar alertas gerenciais:
+
+- Células sem relatórios recentes.
+- Queda de frequência.
+- Novos visitantes sem acompanhamento.
+- Eventos com inscrições baixas.
+- Pagamentos pendentes.
+- Despesas vencidas.
+
+Os dados deverão ser provenientes do banco real.
+
+---
+
+# 8. MÓDULO DE GESTÃO DE CÉLULAS
+
+Este será um dos principais diferenciais do produto.
+
+## Cadastro de células
+
+Campos:
+
+- Nome.
+- Código.
+- Tipo.
+- Dia da semana.
+- Horário.
+- Endereço.
+- Bairro.
+- CEP.
+- Congregação.
+- Líder.
+- Colíder.
+- Supervisor.
+- Coordenador.
+- Data de abertura.
+- Limite de participantes.
+- Status.
+- Observações.
+
+## Gestão de participantes
+
+- Vincular membros.
+- Cadastrar visitantes.
+- Transferir participantes.
+- Consultar histórico.
+- Registrar entrada e saída.
+- Identificar participantes inativos.
+- Acompanhar evolução.
+
+## Gestão de reuniões
+
+- Data.
+- Tema.
+- Responsável.
+- Participantes.
+- Visitantes.
+- Ausentes.
+- Decisões.
+- Pedidos de oração.
+- Observações.
+- Fotos.
+- Registro de oferta, quando aplicável.
+
+## Relatórios
+
+- Frequência semanal.
+- Frequência mensal.
+- Visitantes.
+- Crescimento.
+- Participantes ativos.
+- Células sem relatórios.
+- Desempenho por líder.
+- Comparativos por região.
+
+Criar painel individual para cada líder.
+
+O líder deverá visualizar apenas as células e informações autorizadas.
+
+---
+
+# 9. ORGANOGRAMA E LIDERANÇA
+
+Criar estrutura hierárquica configurável.
+
+Exemplo:
+
+Pastor principal
+→ Pastores auxiliares
+→ Coordenadores
+→ Supervisores
+→ Líderes
+→ Colíderes
+→ Participantes.
+
+Permitir:
+
+- Cadastro de lideranças.
+- Vinculação de células.
+- Histórico de liderança.
+- Transferência de responsabilidade.
+- Indicadores por nível.
+- Visualização gráfica do organograma.
+
+A estrutura deverá permitir diferentes níveis conforme a organização de cada igreja.
+
+---
+
+# 10. GESTÃO DE MEMBROS E VISITANTES
+
+Criar cadastro completo.
+
+Campos:
+
+- Nome.
+- Foto.
+- Data de nascimento.
+- Telefone.
+- E-mail.
+- Endereço.
+- Data de conversão.
+- Data de batismo.
+- Estado civil, quando necessário.
+- Congregação.
+- Ministério.
+- Célula.
+- Status.
+
+Funcionalidades:
+
+- Cadastro de visitantes.
+- Conversão de visitante em membro.
+- Histórico.
+- Transferência de congregação.
+- Aniversariantes.
+- Busca avançada.
+- Importação e exportação.
+- Histórico de participação.
+
+Evitar cadastros duplicados.
+
+Implementar validação de CPF quando coletado.
+
+---
+
+# 11. ACOMPANHAMENTO E DISCIPULADO
+
+Criar módulo para acompanhar a jornada das pessoas.
+
+Funil visual:
+
+Visitante
+→ Primeiro contato
+→ Integração
+→ Discipulado
+→ Membro ativo
+→ Líder em formação.
+
+Funcionalidades:
+
+- Cadastro de decisões.
+- Acompanhamento pastoral.
+- Agendamento de visitas.
+- Registro de contatos.
+- Discipulado.
+- Responsável.
+- Status.
+- Histórico.
+- Alertas pendentes.
+
+Criar permissões especiais para informações pastorais e pessoais sensíveis.
+
+---
+
+# 12. MÓDULO FINANCEIRO GERAL
+
+Desenvolver um financeiro completo, integrado aos demais módulos.
+
+## Funcionalidades
+
+- Contas a pagar.
+- Contas a receber.
+- Receitas.
+- Despesas.
+- Dízimos.
+- Ofertas.
+- Doações.
+- Transferências.
+- Centros de custo.
+- Categorias.
+- Contas bancárias.
+- Fluxo de caixa.
+- Conciliação.
+- Relatórios.
+- DRE gerencial simplificada.
+
+## Dashboards
+
+- Receitas.
+- Despesas.
+- Saldo.
+- Fluxo de caixa.
+- Receitas por categoria.
+- Despesas por categoria.
+- Evolução mensal.
+- Resultado por congregação.
+- Resultado por centro de custo.
+
+## Regras
+
+Todas as movimentações deverão ter origem identificável.
+
+O financeiro deverá integrar eventos, despesas administrativas e demais receitas da igreja.
+
+Não criar lançamentos duplicados.
+
+Utilizar controle de estornos e histórico de alterações.
+
+Valores monetários deverão ser armazenados utilizando DECIMAL, nunca FLOAT.
+
+Utilizar lançamentos financeiros auditáveis, evitando sobrescrever ou apagar movimentações já efetivadas.
+
+---
+
+# 13. MÓDULO DE EVENTOS E INSCRIÇÕES
+
+Este módulo será um dos principais diferenciais comerciais.
+
+O sistema deverá funcionar como uma plataforma própria de gestão e comercialização de inscrições para eventos de igrejas.
+
+## Tipos de eventos
+
+- Congressos.
+- Conferências.
+- Retiros.
+- Acampamentos.
+- Encontros de casais.
+- Seminários.
+- Cursos.
+- Workshops.
+- Eventos para jovens.
+- Eventos de arrecadação.
+
+## Cadastro de eventos
+
+- Nome.
+- Descrição.
+- Imagem.
+- Categoria.
+- Data.
+- Horário.
+- Local.
+- Endereço.
+- Congregação responsável.
+- Organizador.
+- Capacidade.
+- Quantidade de vagas.
+- Abertura das inscrições.
+- Encerramento das inscrições.
+- Status.
+- Evento gratuito ou pago.
+- Visibilidade.
+- Política de cancelamento.
+- Termos e condições.
+
+## Página pública do evento
+
+Criar uma página de divulgação profissional para cada evento.
+
+A página deverá apresentar:
+
+- Banner.
+- Descrição.
+- Programação.
+- Localização.
+- Data.
+- Informações importantes.
+- Lotes disponíveis.
+- Valores.
+- Botão de inscrição.
+- Política de cancelamento.
+
+A página deverá funcionar sem exigir que o visitante tenha uma conta administrativa no SaaS.
+
+## Lotes
+
+Permitir múltiplos lotes.
+
+Exemplo:
+
+- Lote promocional: R$ 80.
+- Primeiro lote: R$ 100.
+- Segundo lote: R$ 130.
+- Último lote: R$ 150.
+
+Cada lote terá:
+
+- Nome.
+- Valor.
+- Quantidade.
+- Período de venda.
+- Limite por participante.
+- Status.
+
+## Inscrições
+
+Permitir:
+
+- Inscrição individual.
+- Inscrição em grupo.
+- Dependentes.
+- Cupons.
+- Descontos.
+- Cortesias.
+- Bolsas.
+- Inscrições gratuitas.
+- Pagamento parcelado, quando suportado.
+
+Cada inscrição deverá possuir identificador único.
+
+## Participantes
+
+Cadastrar:
+
+- Nome.
+- CPF, quando necessário.
+- Telefone.
+- E-mail.
+- Congregação.
+- Célula.
+- Lote.
+- Valor.
+- Desconto.
+- Forma de pagamento.
+- Status financeiro.
+- Data.
+
+Criar QR Code único para check-in.
+
+Permitir consultar presença, cancelar inscrições e transferir participantes.
+
+---
+
+# 14. MÓDULO DE INTEGRAÇÃO COM GATEWAYS DE PAGAMENTO
+
+Esta funcionalidade é obrigatória.
+
+Desenvolver uma central de integrações financeiras para conectar diferentes plataformas de pagamento.
+
+A arquitetura deverá utilizar o padrão Adapter/Provider, permitindo adicionar novos gateways sem reescrever a lógica de negócio.
+
+## Provedores previstos
+
+- Asaas.
+- Mercado Pago.
+- PagBank.
+- Stripe.
+- Outros provedores com API oficial.
+
+A integração deverá respeitar as funcionalidades efetivamente disponibilizadas por cada provedor.
+
+Não inventar endpoints ou métodos de API.
+
+Consultar a documentação oficial de cada provedor antes de implementar.
+
+## Configuração
+
+Cada igreja poderá configurar suas próprias integrações.
+
+Campos:
+
+- Nome.
+- Provedor.
+- API Key.
+- Access Token.
+- Client ID.
+- Client Secret.
+- Webhook Secret.
+- Ambiente sandbox ou produção.
+- Status.
+- Data da conexão.
+- Última sincronização.
+
+As credenciais deverão ser criptografadas no backend.
+
+Nunca exibir tokens completos depois de salvos.
+
+Criar funcionalidade de testar conexão.
+
+Permitir mais de um provedor por igreja.
+
+Permitir escolher o provedor por evento.
+
+## Formas de pagamento
+
+Conforme suporte do provedor:
+
+- PIX.
+- Cartão de crédito.
+- Boleto.
+- Link de pagamento.
+- Checkout externo.
+
+## Modelo comercial de recebimento
+
+Cada igreja deverá conectar sua própria conta de pagamento.
+
+O valor das inscrições deverá ser recebido diretamente pelo provedor da igreja.
+
+O SaaS não deverá custodiar o dinheiro das igrejas.
+
+Registrar separadamente:
+
+- Valor cobrado.
+- Taxas.
+- Valor líquido.
+- Valor aprovado.
+- Valor a liquidar.
+- Valor efetivamente liquidado.
+
+Preparar arquitetura para uma futura funcionalidade de split de pagamentos, sem exigir sua implementação no MVP.
+
+---
+
+# 15. WEBHOOKS E PROCESSAMENTO DE PAGAMENTOS
+
+Esta é uma funcionalidade crítica.
+
+Implementar integração bidirecional entre o sistema e os provedores de pagamento.
+
+## Fluxo de pagamento
+
+1. Participante acessa o evento.
+2. Seleciona um lote.
+3. Preenche os dados.
+4. O sistema cria uma inscrição pendente.
+5. O backend solicita a cobrança ao gateway.
+6. O participante realiza o pagamento.
+7. O gateway envia um webhook.
+8. O backend valida a origem e autenticidade.
+9. O sistema verifica a idempotência.
+10. A transação é processada.
+11. O status financeiro é atualizado.
+12. A inscrição é confirmada.
+13. O participante recebe confirmação.
+
+O retorno do navegador não poderá ser considerado confirmação financeira.
+
+A confirmação deverá depender de um webhook autenticado ou de uma consulta confiável à API do provedor.
+
+## Eventos de webhook
+
+Tratar:
+
+- Cobrança criada.
+- Pagamento pendente.
+- Pagamento aprovado.
+- Pagamento expirado.
+- Pagamento recusado.
+- Cancelamento.
+- Estorno.
+- Reembolso.
+- Contestação.
+- Liquidação.
+
+## Segurança dos webhooks
+
+Implementar:
+
+- Validação de assinatura.
+- Segredo individual por integração.
+- Validação do identificador do provedor.
+- Idempotência.
+- Registro de payload.
+- Controle de tentativas.
+- Processamento assíncrono.
+- Logs.
+- Retentativas.
+- Reprocessamento manual.
+- Tratamento de eventos fora de ordem.
+
+Criar uma tabela específica de eventos recebidos.
+
+Cada evento deverá possuir:
+
+- Identificador interno.
+- Tenant.
+- Provedor.
+- Identificador externo.
+- Tipo.
+- Payload original.
+- Data de recebimento.
+- Status.
+- Quantidade de tentativas.
+- Mensagem de erro.
+- Data de processamento.
+
+Nunca processar duas vezes o mesmo evento financeiro.
+
+Implementar uma estratégia de recuperação para falhas de webhook, incluindo consulta periódica ao provedor quando suportada.
+
+---
+
+# 16. FINANCEIRO INTEGRADO A EVENTOS
+
+Este é um dos módulos mais importantes do produto.
+
+Cada evento deverá possuir um painel financeiro independente, integrado automaticamente ao financeiro geral da igreja.
+
+## Dashboard financeiro do evento
+
+Exibir:
+
+- Receita bruta.
+- Pagamentos confirmados.
+- Valores pendentes.
+- Taxas dos gateways.
+- Reembolsos.
+- Cancelamentos.
+- Receita líquida.
+- Despesas.
+- Resultado operacional.
+- Inscrições.
+- Vagas disponíveis.
+
+## Exemplo gerencial
+
+Evento: Congresso de Jovens.
+
+Receita bruta: R$ 10.000.
+
+Taxas: R$ 300.
+
+Receita líquida: R$ 9.700.
+
+Despesas:
+
+- Alimentação: R$ 2.000.
+- Locação: R$ 1.000.
+- Comunicação: R$ 500.
+
+Resultado operacional: R$ 6.200.
+
+O sistema deverá calcular automaticamente os valores com base nas movimentações reais.
+
+## Despesas do evento
+
+Permitir cadastrar:
+
+- Alimentação.
+- Transporte.
+- Hospedagem.
+- Locação.
+- Materiais.
+- Som.
+- Iluminação.
+- Divulgação.
+- Palestrantes.
+- Fornecedores.
+- Outros custos.
+
+Cada despesa deverá possuir:
+
+- Descrição.
+- Categoria.
+- Valor.
+- Fornecedor.
+- Vencimento.
+- Pagamento.
+- Comprovante.
+- Status.
+- Conta financeira.
+
+## Integração contábil e gerencial
+
+Criar centro de custo automático para cada evento.
+
+As receitas e despesas deverão ser refletidas no financeiro geral sem duplicidade.
+
+Permitir consultar o evento de origem de cada lançamento.
+
+Separar:
+
+- Receita bruta.
+- Taxas.
+- Receita líquida.
+- Valores pendentes.
+- Valores liquidados.
+- Despesas pagas.
+- Despesas a pagar.
+
+## Comparativo entre eventos
+
+Criar dashboard para comparar:
+
+- Receita.
+- Despesa.
+- Resultado.
+- Inscrições.
+- Ticket médio.
+- Taxas.
+- Rentabilidade.
+- Ocupação.
+
+Permitir filtros por período e congregação.
+
+---
+
+# 17. CONCILIAÇÃO FINANCEIRA
+
+Criar módulo próprio para conciliação.
+
+Comparar:
+
+- Inscrições.
+- Cobranças.
+- Pagamentos aprovados.
+- Taxas.
+- Reembolsos.
+- Valores liquidados.
+- Créditos identificados.
+
+Identificar:
+
+- Pagamentos sem inscrição.
+- Inscrições sem pagamento.
+- Transações duplicadas.
+- Divergências de valores.
+- Liquidações pendentes.
+- Reembolsos não concluídos.
+
+Permitir conciliação automática via API quando disponível e conciliação manual.
+
+Criar histórico de conciliação e auditoria.
+
+---
+
+# 18. RELATÓRIO FINAL DOS EVENTOS
+
+Gerar automaticamente relatório gerencial.
+
+Conteúdo:
+
+- Total de inscritos.
+- Total de presentes.
+- Receita bruta.
+- Taxas.
+- Reembolsos.
+- Receita líquida.
+- Despesas.
+- Resultado.
+- Receita por lote.
+- Receita por provedor.
+- Formas de pagamento.
+- Pendências.
+
+Exportar para PDF e Excel.
+
+---
+
+# 19. MÓDULO DE MINISTÉRIOS
+
+Criar gestão de departamentos:
+
+- Louvor.
+- Comunicação.
+- Infantil.
+- Jovens.
+- Mulheres.
+- Homens.
+- Intercessão.
+- Diaconia.
+- Evangelismo.
+- Recepção.
+- Ensino.
+
+Funcionalidades:
+
+- Cadastro.
+- Responsáveis.
+- Participantes.
+- Escalas.
+- Eventos.
+- Relatórios.
+- Controle de presença.
+
+---
+
+# 20. MÓDULO DE COMUNICAÇÃO
+
+Criar central de comunicação.
+
+Funcionalidades:
+
+- Comunicados.
+- Avisos para líderes.
+- Avisos para células.
+- Notificações.
+- Lembretes.
+- Aniversários.
+- Pendências.
+- Comunicados gerais.
+
+Preparar integrações futuras com:
+
+- WhatsApp Business API.
+- E-mail.
+- SMS.
+
+Criar arquitetura independente para cada canal.
+
+---
+
+# 21. MÓDULO DE BI E INTELIGÊNCIA DE DADOS
+
+Criar uma área de Business Intelligence.
+
+Indicadores:
+
+- Crescimento líquido de membros.
+- Retenção.
+- Conversão de visitantes.
+- Frequência nas células.
+- Crescimento por região.
+- Desempenho de líderes.
+- Novas decisões.
+- Batismos.
+- Receita financeira.
+- Despesas.
+- Resultado dos eventos.
+- Ticket médio.
+- Taxa de conversão de inscrições.
+
+Criar dashboards interativos.
+
+Permitir comparação entre períodos.
+
+Criar filtros dinâmicos.
+
+Permitir exportação de relatórios.
+
+Não criar indicadores com cálculos fictícios.
+
+Documentar a fórmula utilizada para cada KPI.
+
+---
+
+# 22. PAINEL ADMINISTRATIVO DO PROPRIETÁRIO DO SAAS
+
+Criar um ambiente separado para administração comercial da plataforma.
+
+Esse painel não poderá ser acessado pelos administradores das igrejas.
+
+## Gestão de clientes
+
+- Cadastro de igrejas.
+- Aprovação.
+- Ativação.
+- Suspensão.
+- Reativação.
+- Configurações.
+- Histórico.
+
+## Gestão comercial
+
+- Planos.
+- Assinaturas.
+- Pagamentos.
+- Inadimplência.
+- Trial.
+- Cancelamentos.
+- Limites de uso.
+
+## Métricas SaaS
+
+- MRR.
+- ARR.
+- Churn.
+- LTV.
+- CAC, quando houver dados.
+- Clientes ativos.
+- Novas assinaturas.
+- Receita recorrente.
+
+## Planos
+
+STARTER:
+- Gestão de membros.
+- Gestão de células.
+- Dashboard básico.
+- Gestão de eventos básica.
+
+PRO:
+- Todos os módulos principais.
+- Financeiro.
+- Integrações de pagamento.
+- BI.
+- Relatórios avançados.
+
+ENTERPRISE:
+- Todos os recursos.
+- Múltiplas congregações.
+- BI avançado.
+- Permissões personalizadas.
+- Recursos adicionais.
+
+Os limites deverão ser configuráveis:
+
+- Quantidade de membros.
+- Quantidade de usuários.
+- Quantidade de células.
+- Quantidade de eventos.
+- Quantidade de integrações.
+
+Não fixar limites no código.
+
+---
+
+# 23. BANCO DE DADOS MYSQL
+
+Criar modelo relacional completo.
+
+Utilizar MySQL 8 ou superior.
+
+## Tabelas principais
+
+### SaaS
+- tenants
+- tenant_settings
+- plans
+- plan_features
+- subscriptions
+- subscription_invoices
+
+### Usuários
+- users
+- roles
+- permissions
+- user_roles
+- user_sessions
+
+### Igreja
+- congregations
+- church_settings
+
+### Membros
+- members
+- visitors
+- member_history
+
+### Células
+- cells
+- cell_members
+- cell_meetings
+- cell_attendance
+- cell_reports
+
+### Liderança
+- leaders
+- leadership_hierarchy
+
+### Discipulado
+- pastoral_followups
+- discipleships
+
+### Ministérios
+- ministries
+- ministry_members
+
+### Eventos
+- events
+- event_categories
+- event_ticket_lots
+- event_registrations
+- event_registration_attendees
+- event_coupons
+- event_checkins
+
+### Financeiro
+- financial_accounts
+- financial_categories
+- financial_transactions
+- financial_ledger_entries
+- financial_cost_centers
+- financial_reconciliation
+
+### Integrações
+- payment_providers
+- payment_integrations
+- payment_transactions
+- payment_webhook_events
+- payment_refunds
+- payment_settlements
+- integration_logs
+
+### Despesas de eventos
+- event_expenses
+- event_cost_centers
+
+### Comunicação
+- notifications
+- communication_logs
+
+### Auditoria
+- audit_logs
+
+Criar outras tabelas complementares quando necessário.
+
+## Requisitos do banco
+
+- Primary Keys.
+- Foreign Keys.
+- Índices.
+- Índices compostos.
+- Unique Constraints.
+- Relacionamentos consistentes.
+- tenant_id nas tabelas pertencentes às igrejas.
+- created_at.
+- updated_at.
+- deleted_at quando necessário.
+- Migrations versionadas.
+- Seeds.
+- Integridade referencial.
+
+Utilizar DECIMAL para valores financeiros.
+
+Utilizar UTC para armazenar datas e horários, com conversão para o fuso horário da igreja na apresentação.
+
+Criar um modelo que permita evolução futura sem grandes alterações estruturais.
+
+---
+
+# 24. LGPD E SEGURANÇA
+
+Implementar boas práticas de segurança.
+
+- Hash de senhas.
+- Criptografia de credenciais.
+- Autenticação segura.
+- Controle de acesso.
+- Rate limiting.
+- Proteção contra SQL Injection.
+- Proteção contra XSS.
+- Proteção contra CSRF quando aplicável.
+- Logs de auditoria.
+- Backup.
+- Controle de sessão.
+- Política de retenção.
+- Exportação de dados.
+- Exclusão conforme obrigações legais.
+- Controle de consentimento quando aplicável.
+
+Informações pastorais, pessoais e financeiras devem possuir permissões específicas.
+
+Não armazenar dados completos de cartão.
+
+Não registrar senhas, tokens ou segredos em logs.
+
+Implementar controle de acesso em todas as operações do backend.
+
+---
+
+# 25. ESTRUTURA DE NAVEGAÇÃO
+
+Organizar a sidebar da aplicação:
+
+**VISÃO GERAL**
+- Dashboard.
+
+**GESTÃO DA IGREJA**
+- Membros.
+- Visitantes.
+- Células.
+- Liderança.
+- Discipulado.
+- Ministérios.
+
+**EVENTOS**
+- Visão geral.
+- Calendário.
+- Eventos.
+- Inscrições.
+- Participantes.
+- Check-in.
+
+**FINANCEIRO**
+- Dashboard financeiro.
+- Receitas.
+- Despesas.
+- Contas.
+- Centros de custo.
+- Conciliação.
+- Financeiro de eventos.
+- Relatórios.
+
+**INTEGRAÇÕES**
+- Provedores de pagamento.
+- Configurações.
+- Webhooks.
+- Logs.
+
+**INTELIGÊNCIA**
+- Relatórios.
+- BI.
+- Indicadores.
+
+**ADMINISTRAÇÃO**
+- Usuários.
+- Permissões.
+- Congregações.
+- Configurações.
+
+O painel do proprietário do SaaS deverá possuir navegação separada.
+
+---
+
+# 26. TELAS OBRIGATÓRIAS
+
+Antes de finalizar o MVP, implementar telas funcionais para:
+
+1. Login.
+2. Dashboard executivo.
+3. Gestão de igrejas.
+4. Cadastro de membros.
+5. Listagem de membros.
+6. Cadastro de células.
+7. Gestão de células.
+8. Relatório de reuniões.
+9. Organograma.
+10. Acompanhamento.
+11. Dashboard financeiro.
+12. Contas a pagar.
+13. Contas a receber.
+14. Cadastro de eventos.
+15. Detalhes do evento.
+16. Página pública de inscrição.
+17. Gestão de lotes.
+18. Lista de inscrições.
+19. Financeiro individual do evento.
+20. Cadastro de despesas.
+21. Configuração de gateways.
+22. Monitoramento de webhooks.
+23. Conciliação.
+24. Relatório de eventos.
+25. Gestão de usuários.
+26. Configuração da igreja.
+27. Painel comercial do SaaS.
+
+Cada tela deverá ter funcionalidades reais, não apenas elementos visuais.
+
+---
+
+# 27. METODOLOGIA DE DESENVOLVIMENTO
+
+Não tentar construir todos os módulos de uma só vez.
+
+Trabalhar em etapas, preservando o código existente.
+
+## FASE 1 — ARQUITETURA
+
+Entregar:
+
+- Arquitetura.
+- Diagrama.
+- Estrutura de pastas.
+- Modelo ER.
+- Modelagem do banco.
+- Fluxos de negócio.
+- Design system.
+- Estratégia Multi-Tenant.
+
+## FASE 2 — FUNDAÇÃO
+
+Implementar:
+
+- Configuração do projeto.
+- Conexão MySQL.
+- ORM.
+- Migrations.
+- Autenticação.
+- Multi-Tenant.
+- Permissões.
+- Layout principal.
+- Design system.
+
+## FASE 3 — MVP DE GESTÃO
+
+Implementar:
+
+- Dashboard.
+- Membros.
+- Visitantes.
+- Células.
+- Reuniões.
+- Frequência.
+- Liderança.
+- Acompanhamento.
+
+## FASE 4 — FINANCEIRO
+
+Implementar:
+
+- Contas.
+- Receitas.
+- Despesas.
+- Categorias.
+- Centros de custo.
+- Fluxo de caixa.
+- Relatórios.
+
+## FASE 5 — EVENTOS
+
+Implementar:
+
+- Cadastro.
+- Página pública.
+- Lotes.
+- Inscrições.
+- Participantes.
+- QR Code.
+- Check-in.
+
+## FASE 6 — INTEGRAÇÕES FINANCEIRAS
+
+Implementar:
+
+- Arquitetura de provedores.
+- Primeiro gateway.
+- Sandbox.
+- Criação de cobranças.
+- Webhooks.
+- Idempotência.
+- Atualização de inscrições.
+- Reembolsos.
+- Conciliação.
+- Integração com financeiro.
+
+## FASE 7 — EXPANSÃO
+
+Implementar:
+
+- Ministérios.
+- Comunicação.
+- BI.
+- Relatórios avançados.
+- Outros gateways.
+
+## FASE 8 — SAAS COMERCIAL
+
+Implementar:
+
+- Gestão de igrejas.
+- Planos.
+- Assinaturas.
+- Cobrança.
+- Limites.
+- Trial.
+- Painel administrativo.
+
+## FASE 9 — QUALIDADE E LANÇAMENTO
+
+Executar:
+
+- Testes unitários.
+- Testes de integração.
+- Testes E2E.
+- Testes de segurança.
+- Testes Multi-Tenant.
+- Testes financeiros.
+- Testes de webhooks.
+- Testes responsivos.
+- Otimização.
+- Documentação.
+- Preparação para deploy.
+
+---
+
+# 28. CRITÉRIOS DE ACEITAÇÃO
+
+O produto só poderá ser considerado funcional quando:
+
+1. Uma igreja conseguir criar sua conta.
+2. Conseguir cadastrar usuários.
+3. Conseguir cadastrar membros.
+4. Conseguir criar células.
+5. Conseguir registrar reuniões.
+6. Conseguir acompanhar participantes.
+7. Conseguir cadastrar receitas e despesas.
+8. Conseguir criar eventos.
+9. Conseguir publicar páginas de inscrição.
+10. Conseguir configurar lotes.
+11. Conseguir receber inscrições.
+12. Conseguir gerar cobranças em um gateway real, após homologação.
+13. Conseguir processar webhooks.
+14. Conseguir atualizar inscrições automaticamente.
+15. Conseguir registrar despesas dos eventos.
+16. Conseguir visualizar o resultado financeiro.
+17. Conseguir conciliar transações.
+18. Conseguir visualizar relatórios.
+19. Garantir isolamento entre igrejas.
+20. Garantir controle de permissões.
+
+---
+
+# 29. REGRAS INEGOCIÁVEIS
+
+- Não desenvolver somente um protótipo.
+- Não criar botões sem ação.
+- Não simular operações financeiras em produção.
+- Não substituir MySQL por banco NoSQL.
+- Não conectar frontend diretamente ao banco.
+- Não deixar informações sensíveis expostas.
+- Não confiar no tenant_id do navegador.
+- Não considerar pagamento aprovado sem confirmação confiável.
+- Não processar webhooks duplicados.
+- Não duplicar receitas e despesas.
+- Não sobrescrever histórico financeiro.
+- Não utilizar dados fictícios como se fossem dados reais.
+- Não inventar integrações.
+- Não inventar endpoints.
+- Não remover funcionalidades já existentes para implementar novas.
+- Não reescrever o projeto inteiro sem necessidade.
+- Não gerar código desorganizado.
+- Não misturar regras de negócio com componentes visuais.
+
+Toda funcionalidade deverá ter:
+- Frontend.
+- Backend.
+- Persistência.
+- Validação.
+- Permissões.
+- Tratamento de erros.
+- Testes quando aplicável.
+
+Quando uma integração ainda não estiver configurada, apresentar claramente seu status como não conectada.
+
+Quando estiver em sandbox, identificar claramente que está em ambiente de testes.
+
+---
+
+# 30. PRIMEIRA EXECUÇÃO NO GOOGLE AI STUDIO
+
+Antes de gerar código, faça uma análise completa deste documento.
+
+Não tente implementar todos os módulos de uma só vez.
+
+Sua primeira entrega deverá conter:
+
+1. Arquitetura técnica proposta.
+2. Estrutura de diretórios.
+3. Modelo entidade-relacionamento.
+4. Modelo inicial do MySQL.
+5. Estratégia Multi-Tenant.
+6. Design system.
+7. Mapa de navegação.
+8. Wireframe das telas principais.
+9. Roadmap técnico.
+
+Em seguida, comece a desenvolver a FASE 1 e a FASE 2.
+
+Crie uma aplicação com layout real, navegação funcional, autenticação e estrutura de backend preparada para integração com MySQL.
+
+Não pare na apresentação da arquitetura. Após apresentar o planejamento, inicie a implementação.
+
+Ao concluir cada etapa, informe:
+
+- O que foi desenvolvido.
+- Arquivos criados.
+- Tabelas criadas.
+- Migrations executadas.
+- Funcionalidades disponíveis.
+- Testes executados.
+- Problemas encontrados.
+- Próxima etapa.
+
+Mantenha um registro das decisões arquiteturais para não perder o contexto entre as etapas.
+
+Se houver limitação de contexto, continue a implementação a partir do último estado funcional, sem apagar ou reconstruir partes prontas.
+
+# RESULTADO FINAL ESPERADO
+
+Construir uma plataforma SaaS comercial de alto nível para gestão de igrejas.
+
+O produto deverá unir gestão de pessoas, células, liderança, discipulado, eventos, pagamentos, financeiro e inteligência de dados em uma única solução.
+
+A experiência visual deverá ser comparável à de produtos SaaS de grandes empresas.
+
+A arquitetura deverá ser segura, modular, escalável e preparada para milhares de igrejas.
+
+O MySQL será o banco de dados principal.
+
+As integrações financeiras deverão funcionar por APIs e webhooks.
+
+A gestão financeira dos eventos deverá estar totalmente integrada ao financeiro geral.
+
+O resultado deverá ser um produto comercializável, e não apenas um projeto demonstrativo.
+
+**Priorize excelência de engenharia, qualidade visual, experiência do usuário, confiabilidade financeira e consistência dos dados.**
